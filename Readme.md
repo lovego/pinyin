@@ -8,11 +8,21 @@ golang pinyin utils.
 
 ## usage
 ```go
-  fmt.Println(Initials("长大"))
-  fmt.Println(Initials("长城abc"))
-  fmt.Println(Initials(" a长b大,c "))
-  // Output:
-  // ZD
-  // ZCABC
-  // AZBDC
+package main
+
+import (
+	"fmt"
+
+	"github.com/lovego/pinyin"
+)
+
+func ExampleInitials() {
+	fmt.Println(pinyin.Initials("长大"))
+	fmt.Println(pinyin.Initials("长城abc"))
+	fmt.Println(pinyin.Initials(" a长b大,c "))
+	// Output:
+	// ZD
+	// ZCABC
+	// AZBDC
+}
 ```
