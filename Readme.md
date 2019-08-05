@@ -8,11 +8,11 @@ golang pinyin utils.
 
 ## usage
 ```go
-	fmt.Println(Initials("长大"))
-	fmt.Println(Initials("长城abc"))
-	fmt.Println(Initials(" a长b大,c "))
-	// Output:
-	// ZD
-	// ZCABC
-	// AZBDC
+  fmt.Println(Initials("长大"))
+  fmt.Println(Initials("长城abc"))
+  fmt.Println(Initials(" a长b大,c "))
+  // Output:
+  // ZD
+  // ZCABC
+  // AZBDC
 ```
