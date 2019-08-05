@@ -9,7 +9,7 @@ import (
 func ExampleInitials() {
 	fmt.Println(pinyin.Initials("长大"))
 	fmt.Println(pinyin.Initials("长城abc"))
-	fmt.Println(pinyin.Initials(" a长b大,c "))
+	fmt.Println(pinyin.Initials(" A长b大,c "))
 	// Output:
 	// ZD
 	// ZCABC
