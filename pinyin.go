@@ -1,4 +1,4 @@
-package utils
+package pinyin
 
 import (
 	"github.com/mozillazg/go-pinyin"
