@@ -32,6 +32,8 @@ func Initials(str string) string {
 			bytes = append(bytes, b)
 		case b >= 'A' && b <= 'Z':
 			bytes = append(bytes, b)
+		case b >= '0' && b <= '9':
+			bytes = append(bytes, b)
 		}
 	}
 	return string(bytes)
