@@ -18,7 +18,7 @@ func Initials(str string) string {
 	var bytes = make([]byte, 0, len(runes))
 	for _, r := range runes {
 		var b byte
-		if r >= 'a' && r <= 'z' || r >= 'A' && r <= 'Z' {
+		if (r >= 'a' && r <= 'z') || (r >= 'A' && r <= 'Z') || (r >= '0' && r <= '9') {
 			b = byte(r)
 		} else if letters := pinyin.SinglePinyin(
 			r, firstLetters,
