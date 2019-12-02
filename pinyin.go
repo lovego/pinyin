@@ -20,19 +20,20 @@ func Initials(str string) string {
 		var b byte
 		if (r >= 'a' && r <= 'z') || (r >= 'A' && r <= 'Z') || (r >= '0' && r <= '9') {
 			b = byte(r)
-		} else if letters := pinyin.SinglePinyin(
-			r, firstLetters,
-		); len(letters) > 0 && len(letters[0]) > 0 {
-			b = letters[0][0]
+		} else {
+			letters := pinyin.SinglePinyin(r, firstLetters)
+			if len(letters) > 0 && len(letters[0]) > 0 {
+				b = letters[0][0]
+			} else {
+				b = byte(r)
+			}
 		}
 
 		switch {
 		case b >= 'a' && b <= 'z':
 			b = b - ('a' - 'A')
 			bytes = append(bytes, b)
-		case b >= 'A' && b <= 'Z':
-			bytes = append(bytes, b)
-		case b >= '0' && b <= '9':
+		default:
 			bytes = append(bytes, b)
 		}
 	}
