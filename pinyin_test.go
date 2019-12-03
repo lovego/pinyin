@@ -13,5 +13,5 @@ func ExampleInitials() {
 	// Output:
 	// ZD
 	// ZCABC
-	// AZBDC
+	// AZBD,C
 }

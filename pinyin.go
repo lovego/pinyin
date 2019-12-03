@@ -1,6 +1,8 @@
 package pinyin
 
 import (
+	"strings"
+
 	"github.com/mozillazg/go-pinyin"
 )
 
@@ -14,7 +16,7 @@ func getArgs() pinyin.Args {
 
 // 获取所有汉字的首字母组合， 比如"长城ABC"，返回"CCABC"
 func Initials(str string) string {
-	var runes = []rune(str)
+	var runes = []rune(strings.TrimSpace(str))
 	var bytes = make([]byte, 0, len(runes))
 	for _, r := range runes {
 		var b byte
