@@ -17,17 +17,17 @@ func getArgs() pinyin.Args {
 // 获取所有汉字的首字母组合， 比如"长城ABC"，返回"CCABC"
 func Initials(str string) string {
 	var runes = []rune(strings.TrimSpace(str))
-	var bytes = make([]byte, 0, len(runes))
+	var bytes = make([]rune, 0, len(runes))
 	for _, r := range runes {
-		var b byte
+		var b rune
 		if (r >= 'a' && r <= 'z') || (r >= 'A' && r <= 'Z') || (r >= '0' && r <= '9') {
-			b = byte(r)
+			b = r
 		} else {
 			letters := pinyin.SinglePinyin(r, firstLetters)
 			if len(letters) > 0 && len(letters[0]) > 0 {
-				b = letters[0][0]
+				b = rune(letters[0][0])
 			} else {
-				b = byte(r)
+				b = r
 			}
 		}
 
