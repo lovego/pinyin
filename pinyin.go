@@ -1,34 +1,32 @@
 package pinyin
 
 import (
+	"regexp"
 	"strings"
-
-	"github.com/mozillazg/go-pinyin"
 )
 
-var firstLetters = getArgs()
-
-func getArgs() pinyin.Args {
-	a := pinyin.NewArgs()
-	a.Style = pinyin.FirstLetter
-	return a
-}
+var (
+	filterRe = regexp.MustCompile("[^a-zA-Z0-9\u4e00-\u9fa5]")
+)
 
 // 获取所有汉字的首字母组合， 比如"长城ABC"，返回"CCABC"
-func Initials(str string) string {
-	var runes = []rune(strings.TrimSpace(str))
-	var result = make([]rune, 0, len(runes))
-	for _, r := range runes {
-		letters := pinyin.SinglePinyin(r, firstLetters)
-		if len(letters) > 0 && len(letters[0]) > 0 {
-			r = rune(letters[0][0])
-		}
-
-		if r >= 'a' && r <= 'z' {
-			r -= ('a' - 'A')
-		}
-
-		result = append(result, r)
+// -noFilter 不对数据做特殊符号处理
+func Initials(s string, noFilter bool) string {
+	if !noFilter {
+		s = filterRe.ReplaceAllString(s, "")
 	}
-	return string(result)
+	for i := 0; i < len(dict); i += 2 {
+		s = strings.Replace(s, dict[i], dictInitials(dict[i+1]), -1)
+	}
+	return strings.ToUpper(s)
+}
+
+func dictInitials(s string) string {
+	var v string
+	for _, item := range strings.Split(s, "\t") {
+		if item != `` {
+			v += strings.ToUpper(item[0:1])
+		}
+	}
+	return v
 }

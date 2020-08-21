@@ -7,11 +7,11 @@ import (
 )
 
 func ExampleInitials() {
-	fmt.Println(pinyin.Initials("长大"))
-	fmt.Println(pinyin.Initials("长城abc"))
-	fmt.Println(pinyin.Initials(" A长b大°,c "))
+	fmt.Println(pinyin.Initials("长大", false))
+	fmt.Println(pinyin.Initials("长城abc", false))
+	fmt.Println(pinyin.Initials(" A长b大°,c ", true))
 	// Output:
 	// ZD
-	// ZCABC
-	// AZBD°,C
+	// CCABC
+	//  AZBD°,C
 }
