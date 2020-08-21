@@ -10,9 +10,9 @@ var (
 )
 
 // 获取所有汉字的首字母组合， 比如"长城ABC"，返回"CCABC"
-// -noFilter 不对数据做特殊符号处理
-func Initials(s string, noFilter bool) string {
-	if !noFilter {
+// -keepSpecial 保留特殊符号
+func Initials(s string, keepSpecial bool) string {
+	if !keepSpecial {
 		s = filterRe.ReplaceAllString(s, "")
 	}
 	for i := 0; i < len(dict); i += 2 {
