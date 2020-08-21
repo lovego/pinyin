@@ -37,6 +37,7 @@ type word struct {
 	Chinese bool
 }
 
+// 分词
 func split(s string) (ws []word) {
 	var temp string
 	lastType := 0
@@ -65,6 +66,7 @@ func split(s string) (ws []word) {
 	return
 }
 
+// 词的首字符，如果不是中文直接取大写，如果字典中不存在原样
 func (w word) initials() (res string) {
 	if !w.Chinese {
 		return strings.ToUpper(w.V)
